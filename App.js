@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SamProfile from './components/SamProfile';
 import pageONE from './components/pageone';
+import pageTwo from './components/pagetwoasync';
+import Goals from './components/Goals';
 
 const Stack = createStackNavigator();
 const MyStack = () => {
@@ -14,8 +16,10 @@ const MyStack = () => {
             options={{ title: 'Listify'}}/>
         <Stack.Screen name="SamProfile" component={SamProfile}
             options={{title: 'Profile'}}/>
-        <Stack.Screen name="pageONE" component={pageONE}
-            options={{title: 'Playlist creator'}}/>
+        <Stack.Screen name="Goals" component={Goals}
+            options={{title: 'Goals'}}/>
+        <Stack.Screen name="pageTwo" component={pageTwo}
+            options={{title: 'async'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -24,6 +28,11 @@ const MyStack = () => {
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <Image
+        style= {{ width: 200, height: 200, marginBottom: 20}}
+        source=  {require('./assets/listifylogo.png')}
+        alt = "listify"
+      />
       <Button
         title="Profile"
         onPress={() =>
@@ -33,9 +42,17 @@ const HomeScreen = ({ navigation }) => {
         backgroundColor= '#d8d4e3'
       />
       <Button
-        title="Page One"
+        title="Async"
         onPress={() =>
-          navigation.navigate('pageONE')
+          navigation.navigate('pageTwo')
+        }
+        color= '#000'
+        backgroundColor= '#d8d4e3'
+      />
+      <Button
+        title="Goals"
+        onPress={() =>
+          navigation.navigate('Goals')
         }
         color= '#000'
         backgroundColor= '#d8d4e3'
@@ -50,7 +67,7 @@ export default MyStack;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     backgroundColor: '#013220',
     alignItems: 'center',
     justifyContent: 'center',
